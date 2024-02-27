@@ -1,13 +1,12 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Typography, Grid, Box } from "@mui/material";
+import { Grid, Box } from "@mui/material";
 import { TreeView, TreeItem } from "@mui/x-tree-view";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
 import { ChevronRight, ExpandMore } from "@mui/icons-material";
 
-export default function Expand({ doc }) {
+export default function Expand({ doc, menuOpen, setmenuOpen }) {
   const [navItems, setNavItems] = useState(doc);
   const [expanded, setExpanded] = useState([]);
   const handleToggle = (event, nodeIds) => {
@@ -21,7 +20,12 @@ export default function Expand({ doc }) {
         defaultExpandIcon={<ChevronRight />}
         expanded={expanded}
         onNodeToggle={handleToggle}
-        sx={{ color: "inherit" }}
+        sx={{
+          color: "inherit",
+          height: "calc(100vh - 82px)",
+          display: { xs: menuOpen ? "block" : "none", md: "block" },
+          padding: { xs: "1rem", md: "0" },
+        }}
       >
         {Object.keys(navItems).map((category) => (
           <Box key={category}>
@@ -37,7 +41,11 @@ export default function Expand({ doc }) {
                 alignContent={"center"}
               ></Grid>
             </Grid>
-            <RenderTree nodes={navItems[category]} />
+            <RenderTree
+              nodes={navItems[category]}
+              setmenuOpen={setmenuOpen}
+              menuOpen={menuOpen}
+            />
           </Box>
         ))}
       </TreeView>
@@ -45,7 +53,7 @@ export default function Expand({ doc }) {
   );
 }
 
-function RenderTree({ nodes }) {
+function RenderTree({ nodes, setmenuOpen, menuOpen }) {
   const pathname = usePathname();
 
   useEffect(() => {
@@ -59,6 +67,13 @@ function RenderTree({ nodes }) {
           key={item._id}
           style={{ textDecoration: "none", color: "white" }}
           href={`/Docs/${item.titleId?.replace(/\?/g, "%3F")}`}
+          onClick={() => {
+            menuOpen
+              ? setmenuOpen((prev) => {
+                  !prev;
+                })
+              : "";
+          }}
         >
           <TreeItem
             key={item._id}

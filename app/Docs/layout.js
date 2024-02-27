@@ -2,29 +2,34 @@ import React, { Suspense } from "react";
 import { Grid } from "@mui/material";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import LoadingOut from "./LoadingOut";
+import { getDocuments } from "../../lib/api";
 
-export default function DocsLayout({ children }) {
+export default async function DocsLayout({ children }) {
+  const docs = await getDocuments();
+
   return (
     <Grid container
       sx={{ display: "flex", justifyContent: "center", width: "100%", height: "100%" }}>
       <Grid
         item
-        xs={3}
+        xs={12}
+        md={3}
         sx={{
-          height: "100vh",
+          height: { xs: "auto", md: "100vh" },
           justifyContent: "center",
           alignItems: "start",
+          position: "relative"
         }}
       >
         <Suspense fallback={<LoadingOut />}>
-          <Sidebar />
+          <Sidebar docs={docs} />
         </Suspense>
       </Grid>
-      <Grid item xs={9}
+      <Grid item xs={12} md={9}
         sx={{
-          height: "100vh",
+          height: { xs: "calc(100vh - 82px)", md: "100vh" },
           boxSizing: "border-box",
-          padding: "1rem 2rem",
+          padding: { xs: "1rem .5rem", md: "1rem 2rem" },
           background: "#cfdae9",
           overflow: "hidden"
         }}

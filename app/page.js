@@ -1,9 +1,16 @@
 import { Grid, Box } from "@mui/material";
 import backImage from "../assets/NeuricLabEasyUnrealEngineAI.gif";
 import Link from "next/link";
-import Sidebar from "../components/Sidebar/Sidebar";
 import Navbar from "../components/Navbar/Navbar";
+import { getDocuments } from "../lib/api";
+export const metadata = {
+  title: 'neuricLab',
+  description: 'Easy UnrealEngine AI',
+};
+
 export default async function Home() {
+  const docs = await getDocuments();
+
   return (
     <>
       <Navbar />
@@ -65,10 +72,6 @@ export default async function Home() {
             </Link>
           </Grid>
         </Grid>
-        <Grid sx={{ display: "none" }}>
-          <Sidebar />
-        </Grid>
-
       </Grid>
     </>
   );
