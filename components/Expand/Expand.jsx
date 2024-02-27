@@ -31,7 +31,9 @@ export default function Expand({ doc, menuOpen, setmenuOpen }) {
           <Box key={category}>
             <Grid container>
               <Grid item xs={6}>
-                <Box sx={{ my: "1rem" }}>{category}</Box>
+                <Box sx={{ my: "1rem", fontSize: "1.2rem", fontWeight: "900" }}>
+                  {category}
+                </Box>
               </Grid>
               <Grid
                 item

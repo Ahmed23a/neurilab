@@ -92,7 +92,7 @@ export default function Sidebar({ docs }) {
             height="100%"
           >
             <path
-              fill="#000000"
+              fill="#001427"
               fill-rule="evenodd"
               d="M19 4a1 1 0 01-1 1H2a1 1 0 010-2h16a1 1 0 011 1zm0 6a1 1 0 01-1 1H2a1 1 0 110-2h16a1 1 0 011 1zm-1 7a1 1 0 100-2H2a1 1 0 100 2h16z"
             />
