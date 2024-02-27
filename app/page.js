@@ -66,7 +66,7 @@ export default async function Home() {
               },
             }}
           >
-            <Box>Monster AI kit</Box>
+            <Link href={"https://www.unrealengine.com/marketplace/en-US/product/monster-ai-kit"} target="_blank"> <Box>Monster AI kit</Box></Link>
             <Link href={"/Docs"}>
               <Box>Documentation</Box>
             </Link>

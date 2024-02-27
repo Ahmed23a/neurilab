@@ -14,6 +14,7 @@ export default function Sidebar({ docs }) {
         color: "#6b7594",
         padding: "1rem",
         position: "relative",
+        zIndex:"5555555"
       }}
     >
       <Grid
@@ -84,8 +85,6 @@ export default function Sidebar({ docs }) {
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            // width="800px"
-            // height="800px"
             viewBox="0 0 20 20"
             fill="none"
             width="100%"
@@ -104,7 +103,7 @@ export default function Sidebar({ docs }) {
           overflowY: "auto",
           position: { xs: "absolute", md: "relative" },
           backgroundColor: "inherit",
-          width: "100%",
+          width: {xs:"100vw",md:"100%"},
           left: 0,
           top: "100%",
         }}
