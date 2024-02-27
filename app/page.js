@@ -17,7 +17,7 @@ export default async function Home() {
       <Grid
         style={{
           backgroundImage: `url(${backImage.src})`,
-          "object-fit": "cover",
+          objectFit: "cover",
         }}
         sx={{
           width: "100%",
